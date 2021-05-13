@@ -89,7 +89,7 @@ def handle_message(event):
             if textt!="":
                 worksheet.append_row((datetime.datetime.now(), textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
-                return textt 
+                return textt  
 
     # # Send To Line
     # reply = TextSendMessage(text=f"我的回話是:{get_message}")

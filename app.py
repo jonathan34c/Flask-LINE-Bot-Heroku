@@ -79,7 +79,7 @@ def handle_message(event):
               # table = workSheet.cell('C'+str(cells.col)).value
               # people = workSheet.cell('D'+str(cells.col)).value
               table = cell[0].neighbour('right')
-              people = table.neighbout('right')
+              people = table.neighbour('right')
               line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text = '你的座位在第'+ str(table.value) + '桌，你的來賓總共有' + str(people.value) + '人')

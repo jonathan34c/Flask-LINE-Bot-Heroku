@@ -68,20 +68,21 @@ def handle_message(event):
 
         else:
             workSheet = sh.worksheet_by_title("table")
-            cells = workSheet.find(event.message.text)
+            cell = workSheet.find(event.message.text)
             if(len(cells)==0):
                 line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text = "抱歉我不懂您的問題，更多婚禮資訊跟功能會在之後推出，如果緊急的話歡迎直接聯絡我們喔！謝謝．")
               )    
             else:
-              print(cells[0][0].col)
-              name = cells[0][0]
-              table = workSheet.cell('C'+str(cells[0][0].col)).value
-              people = workSheet.cell('D'+str(cells[0][0].col)).value
+              print(cell.col)
+              # table = workSheet.cell('C'+str(cells.col)).value
+              # people = workSheet.cell('D'+str(cells.col)).value
+              table = cell.neighbour('right')
+              people = table.neighbout('right')
               line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text = '你的座位在第'+ table + '桌，你的來賓總共有' + people + '人')
+                TextSendMessage(text = '你的座位在第'+ str(table.value) + '桌，你的來賓總共有' + str(people.value) + '人')
               )  
     # # Send To Line
     # reply = TextSendMessage(text=f"我的回話是:{get_message}")

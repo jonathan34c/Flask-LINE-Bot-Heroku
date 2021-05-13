@@ -1,7 +1,4 @@
 import os
-import sys
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials as SAC
 from datetime import datetime
 
 from flask import Flask, abort, request
@@ -10,6 +7,10 @@ from flask import Flask, abort, request
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, LocationSendMessage, ImageMessage, ImageSendMessage
+
+import sys
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials as SAC
 
 app = Flask(__name__)
 

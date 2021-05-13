@@ -35,6 +35,45 @@ def callback():
 def handle_message(event):
     get_message = event.message.text
 
-    # Send To Line
-    reply = TextSendMessage(text=f"我的回話是:{get_message}")
-    line_bot_api.reply_message(event.reply_token, reply)
+    if isinstance(event.message, TextMessage):
+        if event.message.text == "婚宴資訊":
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text = "婚宴時間:2020/07/24日\n開桌時間12:00整\n婚禮地點:台中萊特薇庭宴會廳8F\n 更詳細的地點位置歡迎點選'交通方式'喔！")
+            )
+        if event.message.text == "交通方式":
+            location_message = LocationSendMessage(
+                                title='萊特薇庭宴會廳',
+                                address='407台中市西屯區龍富路五段396號',
+                                latitude=24.160027075487694,
+                                longitude=120.62964710009635
+            )
+            wedding1_img_message = ImageSendMessage(
+                original_content_url='https://i.imgur.com/GWob91O.jpg',
+                preview_image_url='https://i.imgur.com/GWob91O.jpg'
+            )
+            wedding2_img_message = ImageSendMessage(
+                original_content_url='https://i.imgur.com/hgKOVCN.jpg',
+                preview_image_url='https://i.imgur.com/hgKOVCN.jpg'
+            )
+            line_bot_api.reply_message(
+                event.reply_token,
+                location_message
+            )
+            line_bot_api.reply_message(
+                event.reply_token,
+                wedding1_img_message
+            )
+            line_bot_api.reply_message(
+                event.reply_token,
+                wedding2_img_message
+            )
+        else     
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text = "抱歉我不知道你的問題, 更多婚禮資訊跟功能會在之後推出喔, 如果緊急的話也可以直接聯絡我們喔！")
+            )
+
+    # # Send To Line
+    # reply = TextSendMessage(text=f"我的回話是:{get_message}")
+    # line_bot_api.reply_message(event.reply_token, reply)

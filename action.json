@@ -1,0 +1,71 @@
+// Action menu
+//https://ithelp.ithome.com.tw/articles/10229397
+
+{
+    "size": {
+      "width": 2500,
+      "height": 843
+    },
+    "selected": true,
+    "name": "weddingmenu",
+    "chatBarText": "婚禮小幫手",
+    "areas": [
+      {
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 833,
+          "height": 843
+        },
+        "action": {
+          "type": "uri",
+          "label": "甜蜜時光",
+          "uri": "https://photos.app.goo.gl/tdNTcixyiEemoHzB9"
+        }
+      },
+      {
+        "bounds": {
+          "x": 833,
+          "y": 0,
+          "width": 833,
+          "height": 843
+        },
+        "action": {
+          "type": "message",
+          "label": "婚宴資訊",
+          "text": "婚宴資訊"
+        }
+      },
+      {
+        "bounds": {
+          "x": 1666,
+          "y": 0,
+          "width": 833,
+          "height": 843
+        },
+        "action": {
+          "type": "message",
+          "label": "交通方式",
+          "text": "交通方式"
+        }
+      }
+   ]
+}
+
+// "richMenuId": "richmenu-cb2f9d577017fa16deaa72b7d84894a9"
+
+// picture Menu
+
+https://api-data.line.me/v2/bot/richmenu/richmenu-cb2f9d577017fa16deaa72b7d84894a9/content
+
+// curl -v -X POST https://api.line.me/v2/bot/richmenu/{rich menu id}/content \
+// -H " Authorization: Bearer {token}' \
+// -H'Content-Type: application/json " \
+// -H " Content-Type: image/png " \
+// -T image-path.png
+
+
+// confirm 
+https://api.line.me/v2/bot/user/all/richmenu/richmenu-cb2f9d577017fa16deaa72b7d84894a9
+
+

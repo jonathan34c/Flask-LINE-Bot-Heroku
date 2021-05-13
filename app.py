@@ -7,6 +7,11 @@ from flask import Flask, abort, request
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, LocationSendMessage, ImageMessage, ImageSendMessage
+import pygsheets
+#Open Google Sheets
+gc = pygsheets.authorize(service_file='googlesheet.json')
+survey_url = 'https://docs.google.com/spreadsheets/d/1GqyfaeKiqDVV8UWpLBh_DwpObIDEFPihG9aX2H7f4fw/'
+sh = gc.open_by_url(survey_url)
 
 app = Flask(__name__)
 
@@ -66,6 +71,8 @@ def handle_message(event):
                 event.reply_token,
                 TextSendMessage(text = "抱歉我不懂您的問題，更多婚禮資訊跟功能會在之後推出，如果緊急的話歡迎直接聯絡我們喔！謝謝．")
             )
+            header = sh.find(event.message.text)
+            print(header[1].col)
 
     # # Send To Line
     # reply = TextSendMessage(text=f"我的回話是:{get_message}")

@@ -76,11 +76,11 @@ def handle_message(event):
             else:
               print(cells[0][0].col)
               name = cells[0][0]
-              table = name.neighbour('right').value
-              people = table.neighbour('right').value
+              table = sh.cell('C'+str(cells[0][0].col)).value
+              people = sh.cell('D'+str(cells[0][0].col)).value
               line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text = "你的座位在第"+ table + "桌，你的來賓總共有" + people + "人")
+                TextSendMessage(text = '你的座位在第'+ table + '桌，你的來賓總共有' + people + '人')
               )  
     # # Send To Line
     # reply = TextSendMessage(text=f"我的回話是:{get_message}")

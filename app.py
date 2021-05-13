@@ -69,7 +69,7 @@ def handle_message(event):
         else:
             workSheet = sh.worksheet_by_title("table")
             cell = workSheet.find(event.message.text)
-            if(len(cells)==0):
+            if(len(cell)==0):
                 line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text = "抱歉我不懂您的問題，更多婚禮資訊跟功能會在之後推出，如果緊急的話歡迎直接聯絡我們喔！謝謝．")

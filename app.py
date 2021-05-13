@@ -72,7 +72,7 @@ def handle_message(event):
                 TextSendMessage(text = "抱歉我不懂您的問題，更多婚禮資訊跟功能會在之後推出，如果緊急的話歡迎直接聯絡我們喔！謝謝．")
             )
             header = sh.find(event.message.text)
-            print(header[0].col) 
+            print(header.val) 
 
     # # Send To Line
     # reply = TextSendMessage(text=f"我的回話是:{get_message}")

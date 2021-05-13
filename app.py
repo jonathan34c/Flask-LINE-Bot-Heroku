@@ -76,7 +76,7 @@ def handle_message(event):
             GSpreadSheet = 'Wedding'
             scope = ['https://spreadsheets.google.com/feeds']
             key = SAC.from_json_keyfile_name(GDriveJSON, scope)
-            gc = gspread.authorize(key) 
+            gc = gspread.authorize(key)
             worksheet = gc.open(GSpreadSheet).sheet1
             textt=""
             textt+=event.message.text

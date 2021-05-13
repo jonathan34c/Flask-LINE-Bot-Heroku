@@ -41,7 +41,7 @@ def handle_message(event):
                 event.reply_token,
                 TextSendMessage(text = "婚宴時間:2020/07/24日  開桌時間12:00整  婚禮地點:台中萊特薇庭宴會廳8F  更詳細的地點位置歡迎點選交通方式喔！")
             )
-        if event.message.text == "交通方式":
+        elif event.message.text == "交通方式":
             location_message = LocationSendMessage(
                                 title='萊特薇庭宴會廳',
                                 address='407台中市西屯區龍富路五段396號',
@@ -68,7 +68,7 @@ def handle_message(event):
                 event.reply_token,
                 wedding2_img_message
             )
-        else     
+        else:
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text = "抱歉我不知道你的問題, 更多婚禮資訊跟功能會在之後推出喔, 如果緊急的話也可以直接聯絡我們喔！")

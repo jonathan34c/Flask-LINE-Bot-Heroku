@@ -1,4 +1,8 @@
 import os
+import sys
+import datetime
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials as SAC
 from datetime import datetime
 
 from flask import Flask, abort, request
@@ -60,11 +64,32 @@ def handle_message(event):
                 event.reply_token,
                 [location_message, wedding1_img_message, wedding2_img_message]
             )
+
         else:
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text = "抱歉我不懂您的問題，更多婚禮資訊跟功能會在之後推出，如果緊急的話歡迎直接聯絡我們喔！謝謝．")
             )
+            pass
+            #GDriveJSON就輸入下載下來Json檔名稱
+            #GSpreadSheet是google試算表名稱
+            GDriveJSON = 'googlesheet.json'
+            GSpreadSheet = 'Wedding'
+            while True:
+            try:
+                scope = ['https://spreadsheets.google.com/feeds']
+                key = SAC.from_json_keyfile_name(GDriveJSON, scope)
+                gc = gspread.authorize(key)
+                worksheet = gc.open(GSpreadSheet).sheet1
+            except Exception as ex:
+                print('無法連線Google試算表', ex)
+                sys.exit(1)
+            textt=""
+            textt+=event.message.text
+            if textt!="":
+                worksheet.append_row((datetime.datetime.now(), textt))
+                print('新增一列資料到試算表' ,GSpreadSheet)
+                return textt 
 
     # # Send To Line
     # reply = TextSendMessage(text=f"我的回話是:{get_message}")

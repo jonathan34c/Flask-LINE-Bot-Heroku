@@ -39,7 +39,7 @@ def handle_message(event):
         if event.message.text == "婚宴資訊":
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text = "婚宴時間: 2020/07/24日\n開桌時間: 中午12:00\n進場時間: 11:30 \n\n婚禮地點: 台中萊特薇庭宴會廳8F\n\n更詳細的地點位置歡迎點選交通方式喔！")
+                TextSendMessage(text = "婚宴時間: 2020/07/24六\n開桌時間: 中午12:00\n進場時間: 11:30 \n\n婚禮地點: 台中萊特薇庭宴會廳8F\n\n更詳細的地點位置歡迎點選交通方式喔！")
             )
         elif event.message.text == "交通方式":
             location_message = LocationSendMessage(

@@ -75,10 +75,10 @@ def handle_message(event):
                 TextSendMessage(text = "抱歉我不懂您的問題，更多婚禮資訊跟功能會在之後推出，如果緊急的話歡迎直接聯絡我們喔！謝謝．")
               )    
             else:
-              print(cell.col)
+              print(cell[0].col)
               # table = workSheet.cell('C'+str(cells.col)).value
               # people = workSheet.cell('D'+str(cells.col)).value
-              table = cell.neighbour('right')
+              table = cell[0].neighbour('right')
               people = table.neighbout('right')
               line_bot_api.reply_message(
                 event.reply_token,

@@ -75,7 +75,7 @@ def handle_message(event):
               )    
             else:
               cell = cells[0]
-              print(cell.value) 
+              print(cell.values()) 
 
     # # Send To Line
     # reply = TextSendMessage(text=f"我的回話是:{get_message}")

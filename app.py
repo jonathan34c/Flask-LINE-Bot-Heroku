@@ -6,7 +6,7 @@ from flask import Flask, abort, request
 # https://github.com/line/line-bot-sdk-python
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, LocationSendMessage, ImageMessage, ImagemapSendMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, LocationSendMessage, ImageMessage, ImageSendMessage
 
 app = Flask(__name__)
 
@@ -39,7 +39,7 @@ def handle_message(event):
         if event.message.text == "婚宴資訊":
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text = "婚宴時間: 2020/07/24日開桌時間12:00整\n婚禮地點: 台中萊特薇庭宴會廳8F\n更詳細的地點位置歡迎點選交通方式喔！")
+                TextSendMessage(text = "婚宴時間: 2020/07/24日開桌時間12:00整\n\n婚禮地點: 台中萊特薇庭宴會廳8F\n\n更詳細的地點位置歡迎點選交通方式喔！")
             )
         elif event.message.text == "交通方式":
             location_message = LocationSendMessage(
